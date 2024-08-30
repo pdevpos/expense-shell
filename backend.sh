@@ -21,9 +21,9 @@ else
   echo -e "$2 $G success $N" &>>$logfile
 fi
 }
-dnf module disable nodejs -y
-validate $? "nodejs module disabled" &>>logfile
+dnf module disable nodejs -y &>>$logfile
+validate $? "nodejs module disabled" &>>$logfile
 dnf module enable nodejs:20 -y
 validate $? "nodejs module enabled" &>>$logfile
-dnf install nodejs -y
+dnf install nodejs -y &>>$logfile
 validate $? "install nodejs" &>>$logfile
