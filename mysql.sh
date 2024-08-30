@@ -7,7 +7,7 @@ date=$(date +"%Y-%m-%d %H:%M:%S")
 script_name=$0
 logfolder=/var/log/shell-script
 logfile=$logfolder/$script_name-$date.log
-mkdir -p $logfolder &>>$logfile
+mkdir -p $logfolder
 validate()
 {
   if [ $1 -ne 0 ]; then
@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
   dnf install mysql-server -y &>>$logfile
   validate $? "mysql-server"
 else
-  echo -e "$G mysql-server installed already.nothing to do!..$N" | tee -a $logfile
+  echo -e "$G mysql-server installed already.nothing to do!..$N"|tee -a $logfile
 fi
 
 systemctl enable mysqld
@@ -47,7 +47,7 @@ if [ $? -ne 0 ]; then
   mysql_secure_installation --set-root-pass ExpenseApp@1
   validate $? "mysql-server set password"
 else
-  echo -e "$G Password already set, You cannot reset the password with mysql_secure_installation...$N" | tee -a $logfile
+  echo -e "$G Password already set, You cannot reset the password with mysql_secure_installation...$N"|tee -a $logfile
 fi
 
 #usage $#
