@@ -42,6 +42,7 @@ curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-back
 validate $? "Download backend code"
 cd /app
 rm -rf /app/*
+validate $? "remove previous backend code"
 validate $? "move to directory /app"
 if [ $? -ne 0 ]
 then
