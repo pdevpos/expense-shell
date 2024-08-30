@@ -52,5 +52,7 @@ npm install
 validate $? "install npm dependencies"
 cp /home/ec2-user/expense-shell/backend.service  /etc/systemd/system/backend.service
 validate $? "Copy backend service from local to server"
+systemctl daemon-reload
+validate $? "To reload backend service"
 
 
