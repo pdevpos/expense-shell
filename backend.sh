@@ -22,7 +22,7 @@ else
 fi
 }
 dnf module disable nodejs -y &>>$logfile
-validate $? "nodejs module disabled" &>>$logfile
+validate $? "nodejs module disabled"|tee -a $logfile
 dnf module enable nodejs:20 -y &>>$logfile
 validate $? "nodejs module enabled" &>>$logfile
 dnf install nodejs -y &>>$logfile
