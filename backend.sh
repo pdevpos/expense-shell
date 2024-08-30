@@ -27,5 +27,14 @@ dnf module enable nodejs:20 -y &>>$logfile
 validate $? "nodejs module enabled" &>>$logfile
 dnf install nodejs -y &>>$logfile
 validate $? "install nodejs"|tee -a $logfile
-useradd expense
-validate $? "add user as expense" &>>$logfile
+id expense
+if [ $? -ne 0 ]
+then
+  echo -e "$R useradd: user not created...please add $N" &>>$logfile
+  useradd expense
+  validate $? "add user as expense" &>>$logfile
+else
+  echo -e "$G useradd: user 'expense' already exists $N" &>>$logfile
+fi
+
+
