@@ -36,7 +36,7 @@ then
 else
   echo -e "$G useradd: user 'expense' already exists $N" &>>$logfile
 fi
-mkdir /app
+mkdir -p  /app
 validate $? "make a directory /app"
 
 
