@@ -30,3 +30,5 @@ unzip /tmp/frontend.zip
 validate $? "unarchive frontend code"
 cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 validate $? "copy expense conf from server"
+systemctl restart nginx
+validate $? "restart nginx server"
