@@ -58,5 +58,7 @@ systemctl enable backend
 validate $? "Enable backend service"
 systemctl start backend
 validate $? "Start backend service"
+dnf install mysql -y
+validate $? "Install mysql"
 
 
