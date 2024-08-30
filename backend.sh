@@ -41,15 +41,18 @@ validate $? "$G make a directory /app $N" &>>$logfile
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
 validate $? "Download backend code"
 cd /app
+validate $? "move to directory /app"
 rm -rf /app/*
 validate $? "remove previous backend code"
-validate $? "move to directory /app"
-if [ $? -ne 0 ]
-then
-  echo "unarchive backend code"
-  unzip /tmp/backend.zip
-  validate $? "unzip backend code"
-else
-  echo "Backend code already unarchive"
-fi
+unzip /tmp/backend.zip
+validate $? "unzip backend code"
+
+#if [ $? -ne 0 ]
+#then
+#  echo "unarchive backend code"
+#  unzip /tmp/backend.zip
+#
+#else
+#  echo "Backend code already unarchive"
+#fi
 
