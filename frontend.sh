@@ -22,7 +22,15 @@ else
   echo "$2 success"
   fi
 }
-
+usage()
+{
+if [ $1 -eq 0 ]
+then
+  echo "nginx working as expected"
+else
+  echo "nginx is not working"
+  fi
+}
 dnf install nginx -y &>>$logfile
 validate $? "Install nginx" &>>$logfile
 systemctl enable nginx
@@ -41,3 +49,4 @@ cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 validate $? "copy expense conf from server" &>>$logfile
 systemctl restart nginx
 validate $? "restart nginx server" &>>$logfile
+usage $?
