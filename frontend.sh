@@ -22,3 +22,5 @@ systemctl start nginx
 validate $? "Start nginx"
 rm -rf /usr/share/nginx/html/*
 validate $? "remove default nginx content"
+curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
+validate $? "download frontend code"
