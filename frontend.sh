@@ -20,3 +20,5 @@ systemctl enable nginx
 validate $? "Enable nginx"
 systemctl start nginx
 validate $? "Start nginx"
+rm -rf /usr/share/nginx/html/*
+validate $? "remove default nginx content"
