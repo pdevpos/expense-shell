@@ -29,13 +29,13 @@ systemctl enable nginx
 validate $? "Enable nginx" &>>$logfile
 systemctl start nginx
 validate $? "Start nginx" &>>$logfile
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* &>>$logfile
 validate $? "remove default nginx content" &>>$logfile
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
+curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip &>>$logfile
 validate $? "download frontend code" &>>$logfile
 cd /usr/share/nginx/html
 validate $? "move to this directory" &>>$logfile
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$logfile
 validate $? "unarchive frontend code" &>>$logfile
 cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 validate $? "copy expense conf from server" &>>$logfile
