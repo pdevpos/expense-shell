@@ -60,5 +60,7 @@ systemctl start backend
 validate $? "Start backend service"
 dnf install mysql -y
 validate $? "Install mysql"
+mysql -h 172.31.86.123 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+validate $? "load schema to mysql"
 
 
