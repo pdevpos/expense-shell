@@ -18,7 +18,7 @@ if [ $1 -ne 0 ]
 then
     echo -e "$2 $R failed $N" &>>$logfile
 else
-  echo -e "$2 $G success $N" | tee -a $logfile
+  echo -e "$2 $G success $N" &>>$logfile
 fi
 }
 dnf module disable nodejs -y &>>$logfile
@@ -26,4 +26,4 @@ validate $? "nodejs module disabled" &>>$logfile
 dnf module enable nodejs:20 -y &>>$logfile
 validate $? "nodejs module enabled" &>>$logfile
 dnf install nodejs -y &>>$logfile
-validate $? "install nodejs" &>>$logfile
+validate $? "install nodejs" | tee -a $logfile
