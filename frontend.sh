@@ -23,7 +23,7 @@ else
   fi
 }
 
-dnf install nginx -y
+dnf install nginx -y &>>$logfile
 validate $? "Install nginx" &>>$logfile
 systemctl enable nginx
 validate $? "Enable nginx" &>>$logfile
