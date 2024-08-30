@@ -7,7 +7,7 @@ date=$(date +"%Y-%m-%d %H:%M:%S")
 script_name=$0
 logfolder=/var/log/shell-script
 logfile=$logfolder/$script_name-$date.log
-mkdir -p $logfolder
+mkdir -p $logfolder &>>$logfile
 validate()
 {
   if [ $1 -ne 0 ]; then
