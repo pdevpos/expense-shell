@@ -41,7 +41,7 @@ validate $? "$G make a directory /app $N" &>>$logfile
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
 validate $? "Download backend code"
 cd /app
-rm -rf app/*
 validate $? "move to directory /app"
+rm -rf app/*
 unzip /tmp/backend.zip
 validate $? "unzip backend code"
