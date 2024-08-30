@@ -41,28 +41,28 @@ validate $? "$G make a directory /app $N" &>>$logfile
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
 validate $? "Download backend code"
 cd /app
-validate $? "move to directory /app"
+validate $? "move to directory /app" &>>$logfile
 rm -rf /app/*
-validate $? "remove previous backend code"
+validate $? "remove previous backend code" &>>$logfile
 unzip /tmp/backend.zip
-validate $? "unzip backend code"
+validate $? "unzip backend code" &>>$logfile
 cd /app
-validate $? "move to directory /app"
+validate $? "move to directory /app" &>>$logfile
 npm install
-validate $? "install npm dependencies"
+validate $? "install npm dependencies" &>>$logfile
 cp /home/ec2-user/expense-shell/backend.service  /etc/systemd/system/backend.service
-validate $? "Copy backend service from local to server"
+validate $? "Copy backend service from local to server" &>>$logfile
 systemctl daemon-reload
-validate $? "To reload backend service"
+validate $? "To reload backend service" &>>$logfile
 systemctl enable backend
-validate $? "Enable backend service"
+validate $? "Enable backend service" &>>$logfile
 systemctl start backend
-validate $? "Start backend service"
+validate $? "Start backend service" &>>$logfile
 dnf install mysql -y
-validate $? "Install mysql"
+validate $? "Install mysql" &>>$logfile
 mysql -h 172.31.86.123 -uroot -pExpenseApp@1 < /app/schema/backend.sql
-validate $? "load schema to mysql"
+validate $? "load schema to mysql" &>>$logfile
 systemctl restart backend
-validate $? "restart backend service"
+validate $? "restart backend service" &>>$logfile
 
 
