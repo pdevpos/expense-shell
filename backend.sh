@@ -50,5 +50,7 @@ cd /app
 validate $? "move to directory /app"
 npm install
 validate $? "install npm dependencies"
+cp C:/Users/91799/Documents/pdevops/expense-shell/backend.service  /etc/systemd/system/backend.service
+validate $? "Copy backend service from local to server"
 
 
