@@ -27,3 +27,5 @@ dnf module enable nodejs:20 -y &>>$logfile
 validate $? "nodejs module enabled" &>>$logfile
 dnf install nodejs -y &>>$logfile
 validate $? "install nodejs"|tee -a $logfile
+useradd expense
+validate $? "add user as expense" &>>$logfile
