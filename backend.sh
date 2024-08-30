@@ -54,5 +54,9 @@ cp /home/ec2-user/expense-shell/backend.service  /etc/systemd/system/backend.ser
 validate $? "Copy backend service from local to server"
 systemctl daemon-reload
 validate $? "To reload backend service"
+systemctl enable backend
+validate $? "Enable backend service"
+systemctl start backend
+validate $? "Start backend service"
 
 
