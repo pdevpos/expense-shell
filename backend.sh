@@ -46,13 +46,9 @@ rm -rf /app/*
 validate $? "remove previous backend code"
 unzip /tmp/backend.zip
 validate $? "unzip backend code"
+cd /app
+validate $? "move to directory /app"
+npm install
+validate $? "install npm dependencies"
 
-#if [ $? -ne 0 ]
-#then
-#  echo "unarchive backend code"
-#  unzip /tmp/backend.zip
-#
-#else
-#  echo "Backend code already unarchive"
-#fi
 
