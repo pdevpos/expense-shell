@@ -24,3 +24,7 @@ rm -rf /usr/share/nginx/html/*
 validate $? "remove default nginx content"
 curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
 validate $? "download frontend code"
+cd /usr/share/nginx/html
+validate $? "move to this directory"
+unzip /tmp/frontend.zip
+validate $? "unarchive frontend code"
